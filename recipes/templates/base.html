@@ -1,26 +1,48 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} YumYard {% endblock %}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'recipes/custom.css' %}"
+    />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'recipes/favicon.ico' %}"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %} COOKies {% endblock %}</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" type="text/css" href="{% static 'recipes/custom.css' %}"> 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'recipes/favicon.ico' %}">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light" style="font-size: 1.25em; padding: 5px;">
-      <a class="navbar-brand" href="{% url 'home' %}"><span
-          style="color: red; font-weight: bold; margin-left: 5px;">COOK</span><span
-          style="color: white; font-weight: bold;">ies</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark text-light"
+      style="font-size: 1.25em; padding: 5px"
+    >
+      <a class="navbar-brand" href="{% url 'home' %}"
+        ><span style="color: red; font-weight: bold; margin-left: 5px">Yum</span
+        ><span style="color: white; font-weight: bold">Yard</span></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -43,9 +65,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'signup' %}">Signup</a>
           </li>
-          {% endif %}
-
-          {% if user.is_authenticated %}
+          {% endif %} {% if user.is_authenticated %}
           <!-- Visible on screens smaller than lg -->
           <li class="nav-item d-lg-none">
             <a class="nav-link" href="{% url 'my_recipes' %}">Your Account</a>
@@ -53,102 +73,125 @@
 
           <!-- Visible on screens larger than md -->
           <li class="nav-item d-none d-lg-block">
-            <a class="nav-link" href="{% url 'my_recipes' %}">Welcome, <span style="color: rgba(255, 0, 0, 0.804); font-weight: 800;">{{ user.username }}</span></a>
+            <a class="nav-link" href="{% url 'my_recipes' %}"
+              >Welcome,
+              <span style="color: rgba(255, 0, 0, 0.804); font-weight: 800"
+                >{{ user.username }}</span
+              ></a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
         </ul>
         {% endif %}
-
       </div>
     </nav>
 
-
-  {% block content %}
-  <div id="loading-screen"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; z-index: 100;">
-    Loading...
-
-  </div>
-  <video autoplay loop muted id="video-background"> </video>
-  <div class="centered-content">
-
-    <div class="container mt-1 text-light text-center">
-      <h1 class="mytitle">Welcome to <span style="color: red; font-weight: bold;">COOK</span><span
-          style="color: white; font-weight: bold;">ies</span>!</h1>
+    {% block content %}
+    <div
+      id="loading-screen"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      "
+    >
+      Loading...
     </div>
-    <br>
-    <!-- Did you know? -->
-    <h3 class="text-light">Did you know?</h3>
-    <div class="container mt-1 text-light text-center">
-      <p id="foodFact">Let's Cook</p>
+    <video autoplay loop muted id="video-background"></video>
+    <div class="centered-content">
+      <div class="container mt-1 text-light text-center">
+        <h1 class="mytitle">
+          Welcome to <span style="color: red; font-weight: bold">Yum</span
+          ><span style="color: white; font-weight: bold">Yard</span>!
+        </h1>
+      </div>
+      <br />
+      <!-- Did you know? -->
+      <h3 class="text-light">Did you know?</h3>
+      <div class="container mt-1 text-light text-center">
+        <p id="foodFact">Let's Cook</p>
+      </div>
     </div>
 
-  </div>
+    <div class="Blackey"></div>
 
-  <div class="Blackey">
+    {% endblock %}
 
-  </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
 
-  {% endblock %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var video = document.getElementById("video-background");
+      var loadingScreen = document.getElementById("loading-screen");
+      video.src =
+        "https://dl.dropboxusercontent.com/scl/fi/b0h4n9u2hni5haisdvvhw/Untitled-video-Made-with-Clipchamp-1.mp4?rlkey=r8qgxo1agqsd7aoovtplu2ei3&dl=0";
+      // Hide the loading screen when the video is ready to play through
+      video.addEventListener("canplaythrough", function () {
+        loadingScreen.style.display = "none";
+      });
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      // food facts
+      var foodFacts = [
+        "Tomatoes are technically a fruit, not a vegetable.",
+        "The world's most expensive spice is saffron.",
+        "Bananas are berries, but strawberries aren't.",
+        "Chocolate was once used as currency.",
+        "Carrots were originally purple, not orange.",
+        "There are over 1,000 varieties of bananas.",
+        "The hottest chili pepper in the world is the Carolina Reaper.",
+        "A single spaghetti noodle is called a 'spaghetto.'",
+        "Pineapples take almost two years to grow.",
+        "Honey never spoils; it's eternal.",
+        "World's largest pizza was 122 feet.",
+        "Joey Chestnut ate 75 hot dogs in 10 minutes.",
+        "Average American eats 18 pounds of bacon yearly.",
+        "Apples float; they're 25% air.",
+        "A cluster of bananas is a 'hand.'",
+        "World's oldest recipe is for beer.",
+        "Peanuts aren't nuts; they're legumes.",
+        "Popsicle invented by an 11-year-old.",
+        "Fear of veggies is lachanophobia.",
+        "World's largest hamburger weighed 2,014 pounds.",
+        "Oldest evidence of cheese-making is 7,000 years old.",
+        "The world's most expensive pizza costs $12,000.",
+        "The world's most expensive coffee is $600 a pound.",
+        "Pizza Hut made a delivery to the International Space Station in 2001.",
+      ];
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    var video = document.getElementById('video-background');
-    var loadingScreen = document.getElementById('loading-screen');
-    video.src = 'https://dl.dropboxusercontent.com/scl/fi/b0h4n9u2hni5haisdvvhw/Untitled-video-Made-with-Clipchamp-1.mp4?rlkey=r8qgxo1agqsd7aoovtplu2ei3&dl=0';
-    // Hide the loading screen when the video is ready to play through
-    video.addEventListener('canplaythrough', function () {
-      loadingScreen.style.display = 'none';
-    });
+      // Display a random food fact
 
-    // food facts
-    var foodFacts = [
-      "Tomatoes are technically a fruit, not a vegetable.",
-      "The world's most expensive spice is saffron.",
-      "Bananas are berries, but strawberries aren't.",
-      "Chocolate was once used as currency.",
-      "Carrots were originally purple, not orange.",
-      "There are over 1,000 varieties of bananas.",
-      "The hottest chili pepper in the world is the Carolina Reaper.",
-      "A single spaghetti noodle is called a 'spaghetto.'",
-      "Pineapples take almost two years to grow.",
-      "Honey never spoils; it's eternal.",
-      "World's largest pizza was 122 feet.",
-      "Joey Chestnut ate 75 hot dogs in 10 minutes.",
-      "Average American eats 18 pounds of bacon yearly.",
-      "Apples float; they're 25% air.",
-      "A cluster of bananas is a 'hand.'",
-      "World's oldest recipe is for beer.",
-      "Peanuts aren't nuts; they're legumes.",
-      "Popsicle invented by an 11-year-old.",
-      "Fear of veggies is lachanophobia.",
-      "World's largest hamburger weighed 2,014 pounds.",
-      "Oldest evidence of cheese-making is 7,000 years old.",
-      "The world's most expensive pizza costs $12,000.",
-      "The world's most expensive coffee is $600 a pound.",
-      "Pizza Hut made a delivery to the International Space Station in 2001."
-    ];
+      $(document).ready(function () {
+        var randomIndex = Math.floor(Math.random() * foodFacts.length);
+        $("#foodFact").text(foodFacts[randomIndex]);
 
-    // Display a random food fact
-
-    $(document).ready(function () {
-      var randomIndex = Math.floor(Math.random() * foodFacts.length);
-      $('#foodFact').text(foodFacts[randomIndex]);
-
-      // Change the food fact every 5 seconds
-      setInterval(function () {
-        randomIndex = Math.floor(Math.random() * foodFacts.length);
-        $('#foodFact').fadeOut(function () {
-          $(this).text(foodFacts[randomIndex]).fadeIn();
-        });
-      }, 5000); 
-    });
-  </script>
-</body>
+        // Change the food fact every 5 seconds
+        setInterval(function () {
+          randomIndex = Math.floor(Math.random() * foodFacts.length);
+          $("#foodFact").fadeOut(function () {
+            $(this).text(foodFacts[randomIndex]).fadeIn();
+          });
+        }, 5000);
+      });
+    </script>
+  </body>
 </html>
