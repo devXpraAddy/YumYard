@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+<!-- This page is a form for creating and editing recipes. It is a good example of how to use Bootstrap forms with Django forms. -->
+
+{% block content %}
+<div class="Blackey"></div>
+<img src="https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Background Loading" class="img-bg">
+<div class="d-flex justify-content-center" style="margin-top:30px">
+    <div class="container d-flex justify-content-center">
+        <div class="row col-md-4">
+            <div>
+                <div class="card border border-dark ">
+                    <div class="card-header text-bg-dark">
+                        <div class="card-title">
+                            <h3 class="text-center"> Recipe Details</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex card-body justify-content-center align-items-center">
+                        <form id="recipeForm" method="post" enctype="multipart/form-data" class="w-100">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group mb-3">
+                                <h6 for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</h6>
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                            <div class="text-center" style="margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary">Save Recipe</button>
+                            </div>
+                        </form>
+                    </div>
+                    {% if messages %}
+                    <div class="alert alert-danger" style="width: 100%; margin-top: 15px;">
+                        <ul>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  var textareas = document.querySelectorAll('textarea');
+  textareas.forEach(function(textarea) {
+      textarea.style.height = '50px';     
+  });
+</script>
+{% endblock %}

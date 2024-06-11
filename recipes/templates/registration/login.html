@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="Blackey"></div>
+<img src="https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  alt="Background Loading" class="img-bg">
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="container d-flex justify-content-center align-items-center"
+    style="margin-top: 50px; margin-bottom: 100px;">
+    <div class="row col-md-3">
+      <div>
+        <div class="card border border-dark">
+          <div class="card-header text-bg-dark">
+            <div class="card-title">
+              <h3 class="text-center">Login</h3>
+            </div>
+          </div>
+          <div class="d-flex card-body justify-content-center align-items-center">
+            <form action="" method="post" class="">
+              {% csrf_token %}
+              {% for field in form %}
+              <div class="form-group text-left " style="margin: 10px;">
+                <h6>{{field.label}} </h6>
+
+                {{field}}
+
+              </div>
+              {% endfor %}
+              {% comment %} {% if form.errors %}
+
+              <div class="alert alert-danger" style="margin-top: 15px;">
+                {{ form.errors }}
+              </div>
+              {% endif %} {% endcomment %}
+              <div class="text-center" style="margin-top: 20px;">
+                <button class="btn btn-info" type="submit" style="padding-top: 1px; padding-bottom: 3px;">Login</button>
+              </div>
+
+            </form>
+            <br>
+          </div>
+          {% if messages %}
+          <div class="alert alert-danger" style="width: 250px; margin-left: 8%;">
+            <ul>
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          <div class="">
+            <p class="text-center" style="padding-top: 5px;">Don't have an account? <a href="{% url 'signup' %}"
+                style="text-decoration: none;"><span style="color:  rgb(27, 198, 255); font-weight: bold;">Sign
+                  Up</span></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

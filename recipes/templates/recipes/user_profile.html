@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+<!-- This page will show all recipes in the database. It will also have a search bar to search for recipes by name, description, steps, username, etc. -->
+
+{% block content %}
+<div class="Blackey"></div>
+<img src="https://images.pexels.com/photos/4860455/pexels-photo-4860455.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Background Loading" class="img-bg">
+
+
+  <div class="container mt-5">
+    
+    {% if recipes %}
+    
+    <h2 id="foodFact" style="font-weight: bold;">Hey {{ user.username }} !</h2>
+    <h3 id="foodFact" class="mt-5 mb-3"> Your Posts </h3>
+      <div class="row">
+        {% for recipe in recipes %}
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" class="card-img-top" alt="...">
+              {% else %}
+                <img src="https://img.freepik.com/free-photo/handrawn-barbecue-elements_125540-588.jpg?w=996&t=st=1704470994~exp=1704471594~hmac=903f1a99725e8063965fae453a8b04ceb04ab2b90a36ca94ed70537c0b030c09" class="card-img-top" alt="...">
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ recipe.name }}</h5>
+                <p class="card-text">{{ recipe.description|truncatechars:40 }}</p>          
+                
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-primary">View Details</a>
+
+                {% if user.is_authenticated and user == recipe.user %}
+                  <a href="{% url 'recipe_update' recipe.pk %}" class="btn btn-warning">Update</a>
+                  <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-danger">Delete</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p id="foodFact">No recipes yet!!</p>
+    {% endif %}
+  </div>
+
+
+{% endblock %}

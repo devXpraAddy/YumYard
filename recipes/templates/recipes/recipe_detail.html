@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!-- This page is for the detail view of a recipe. It will show the recipe's name, description, ingredients, steps, and image. It will also show a YouTube video if the recipe has a YouTube URL. -->
+
+{% block content %}
+<div class="Blackey"></div>
+<img
+  src="https://dl.dropboxusercontent.com/scl/fi/bzoghf4lmnvlh6q62cwat/vintage-old-rustic-cutlery-dark.jpg?rlkey=fapcav8lgc3n5n936rnmdfen9&dl=0"
+  alt="Background Loading" class="img-bg">
+<div class="container mt-5" style="color: white;">
+  <h2 class="mb-4">{{ recipe.name }}</h2>
+  <div class="row">
+    <div class="col-md-6">
+      {% if recipe.image %}
+      <img src="{{ recipe.image.url }}" class="img-fluid rounded" alt="{{ recipe.name }}" style="height: 550px; width: 550px; object-fit: contain;">
+      {% endif %}
+      {% if recipe.youtube_url %}
+      <h4 class="mt-5">Stuck somewhere? Watch this recipe's video <br> on YouTube:</h4>
+      <div class="mt-4">
+        <iframe width="100%" height="315" src="{{ recipe.youtube_embed_url }}" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <div >
+        <h4 style="color: rgba(255, 54, 54, 0.885); font-weight: bold;">Description:</h4>
+        <p class="lead">{{ recipe.description }}</p>
+      </div>
+      <div class="mt-4">
+        <h4 style="color: rgba(255, 54, 54, 0.885); font-weight: bold;">Ingredients:</h4>
+        <p class="lead">{{ recipe.ingredients|linebreaks }}</p>
+      </div>
+      <div class="mt-4">
+        <h4 style="color: rgba(255, 54, 54, 0.885); font-weight: bold;">Steps:</h4>
+        <p class="lead">{{ recipe.steps|linebreaks }}</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

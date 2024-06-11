@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+  #video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    object-fit: cover;
+  }
+
+  .Blackey {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    z-index: -99;
+  }
+
+  .centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    /* Full height of the viewport */
+    font-size: 300%;
+    padding-top: 30vh;
+  }
+
+
+  #foodFact {
+    font-size: 42px;
+    font-weight: lighter;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .img-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    object-fit: cover;
+  }
+
+  .mytitle {
+    font-size: 85px;
+    font-weight: lighter;
+  }
+
+  .card-img-top {
+    width: 100%;
+    /* ensure the image takes up the full width of the card */
+    height: 300px;
+    /* set a fixed height */
+    object-fit: contain;
+    /* ensure the aspect ratio of the image is preserved */
+  }
