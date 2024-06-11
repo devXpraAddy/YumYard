@@ -1,10 +1,10 @@
-# COOKies
+# YumYard
 
-COOKies is a web application that allows users to explore, share, and discover a variety of food recipes. With a user-friendly interface and interactive features, COOKies aims to make the culinary journey enjoyable for everyone.
+YumYard is a web application that allows users to explore, share, and discover a variety of food recipes. With a user-friendly interface and interactive features, COOKies aims to make the culinary journey enjoyable for everyone.
 
 ## Live Demo
 
-Visit the live COOKies web application at [/](/) to experience the culinary world firsthand.
+Visit the live YumYard web application at [/](/) to experience the culinary world firsthand.
 
 ## Features
 
