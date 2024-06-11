@@ -43,7 +43,7 @@ To run COOKies locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone
+   git clone https://github.com/devXpraAddy/YumYard.git
    cd cookies
    ```
 
