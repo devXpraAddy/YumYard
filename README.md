@@ -1,6 +1,6 @@
 # YumYard
 
-YumYard is a web application that allows users to explore, share, and discover a variety of food recipes. With a user-friendly interface and interactive features, COOKies aims to make the culinary journey enjoyable for everyone.
+YumYard is a web application that allows users to explore, share, and discover a variety of food recipes. With a user-friendly interface and interactive features, YumYard aims to make the culinary journey enjoyable for everyone.
 
 ## Live Demo
 
