@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-=wg05__%)+*x2#72l8j@$b7x1+_rnopu21775^8pff5982t9tn"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app", ".now.sh", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [".vercel.app", "127.0.0.1", ".now.sh"]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -69,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "recipe_app.wsgi.application"
+WSGI_APPLICATION = "recipe_app.wsgi.app"
 
 
 # Database
@@ -125,9 +126,15 @@ STATIC_URL = "/static/"
 # STATICFILES_DIRS = [
 #     BASE_DIR / "recipes/static",
 # ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "recipes/static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "recipes/staticfiles")
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "recipes/static"),)
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
