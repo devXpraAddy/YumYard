@@ -38,7 +38,7 @@ Visit the live YumYard web application at [/](/) to experience the culinary worl
 
 ## Get Started Locally
 
-To run COOKies locally, follow these steps:
+To run YumYard locally, follow these steps:
 
 1. Clone the repository:
 
@@ -72,6 +72,6 @@ To run COOKies locally, follow these steps:
    python manage.py runserver
    ```
 
-6. Open your browser and visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see COOKies in action.
+6. Open your browser and visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see YumYard in action.
 
 Happy cooking! 🍪🍲
